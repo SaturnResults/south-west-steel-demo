@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>South West Steel Construction — Steel Frame Buildings</title>
+<meta name="description" content="Bespoke steel frame buildings, manufactured in the heart of Devon and delivered across the UK.">
+<link rel="icon" type="image/png" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* header: same build as the Mind and Performance demo. Docked over the hero, then a
+   floating white pill past it that hides on scroll down and returns on scroll up */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.site-header{position:absolute;top:0;left:0;right:0;z-index:60;padding:14px clamp(12px,3vw,28px);transition:opacity .34s ease,transform .34s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.site-header.is-hidden{opacity:0;transform:translateY(-10px);pointer-events:none}
+.site-header.no-anim{transition:none}
+.site-header.is-hidden .header-inner{transition:none}
+.site-header.is-solid{position:fixed}
+.header-inner{max-width:1280px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 18px;border-radius:999px;background:transparent;box-shadow:none;transition:background .3s ease,box-shadow .3s ease}
+.site-header.is-solid .header-inner{background:#fff;box-shadow:0 12px 34px -14px rgba(17,18,20,.28)}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:50px;width:auto;transition:height .3s ease}
+.site-header.is-solid .brand img{height:44px;filter:none}
+.nav__links{display:flex;align-items:center;gap:28px}
+.nav__links > a,.nav__links > .has-sub > button{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--hd-fg);position:relative;padding-block:6px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.site-header.is-solid .nav__links > a,.site-header.is-solid .nav__links > .has-sub > button{color:#111214}
+.nav__links > a::after,.nav__links > .has-sub > button::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;border-radius:2px;background:var(--brand);transition:width .25s}
+.nav__links > a:hover::after,.nav__links > .has-sub > button:hover::after{width:100%}
+.nav__links .chev{width:12px;height:12px;opacity:.7;transition:transform .2s}
+.has-sub{position:relative}
+.has-sub[aria-expanded="true"] .chev,.has-sub:hover .chev{transform:rotate(180deg)}
+.subnav{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:340px;background:#fff;border-radius:20px;padding:10px;box-shadow:0 24px 50px -18px rgba(17,18,20,.35);border:1px solid #e2ded7;opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s}
+.subnav::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.has-sub:hover .subnav,.has-sub:focus-within .subnav,.has-sub[aria-expanded="true"] .subnav{opacity:1;visibility:visible;transform:translateX(-50%);transition:opacity .22s ease,transform .22s ease,visibility 0s}
+.subnav a{display:flex;gap:14px;align-items:flex-start;padding:12px 14px;border-radius:14px;color:#111214}
+.subnav a:hover{background:#f4f2ee}
+.subnav i{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px;background:var(--brand)}
+.subnav strong{display:block;font-family:var(--sans);font-weight:600;font-size:14.5px;letter-spacing:-.01em}
+.subnav small{display:block;font-family:var(--sans);font-size:12.5px;color:#75777d;margin-top:2px;line-height:1.4}
+.nav__right{display:flex;align-items:center;gap:10px}
+.header-inner .btn{padding:12px 22px}
+.nav__toggle{display:none;width:44px;height:44px;border-radius:999px;background:rgba(17,18,20,.06);border:1px solid transparent;color:var(--hd-fg);cursor:pointer;align-items:center;justify-content:center;transition:background .3s}
+.site-header.is-solid .nav__toggle{color:#111214;background:rgba(17,18,20,.06)}
+.nav__toggle svg{width:20px;height:20px}
+
+/* mobile drawer */
+body.no-scroll{overflow:hidden}
+.drawer-overlay{position:fixed;inset:0;z-index:70;background:rgba(10,11,12,.55);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.drawer-overlay.is-open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;z-index:80;height:100dvh;width:min(390px,88vw);background:#f6f4f0;color:#111214;display:flex;flex-direction:column;font-family:var(--sans);transform:translateX(101%);visibility:hidden;box-shadow:-24px 0 60px -30px rgba(17,18,20,.5);transition:transform .34s cubic-bezier(.4,0,.2,1),visibility 0s linear .34s}
+.drawer.is-open{transform:none;visibility:visible;transition:transform .34s cubic-bezier(.4,0,.2,1),visibility 0s}
+.drawer::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--brand)}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #e2ded7}
+.drawer__brand img{height:40px;width:auto}
+.drawer__close{width:44px;height:44px;border-radius:999px;background:#fff;border:1px solid #e2ded7;color:#111214;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.drawer__close svg{width:18px;height:18px}
+.drawer__links{flex:1;overflow-y:auto;padding:6px 20px}
+.drawer__links a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;font-size:17px;color:#111214;border-bottom:1px solid #e2ded7}
+.drawer__links a svg{width:16px;height:16px;color:var(--brand);flex:none;transition:transform .2s}
+.drawer__links a:hover svg{transform:translateX(4px)}
+.drawer__links .sub{font-size:15px;padding:12px 0 12px 16px;color:#3d3f44}
+.drawer__acc{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:none;border:0;cursor:pointer;padding:15px 0;font-family:var(--sans);font-size:17px;font-weight:400;color:#111214;text-align:left;border-bottom:1px solid #e2ded7}
+.drawer__chev{width:14px;height:14px;flex:0 0 auto;color:var(--brand);transition:transform .24s ease}
+.drawer__acc[aria-expanded="true"] .drawer__chev{transform:rotate(180deg)}
+.drawer__panel[hidden]{display:none}
+.drawer__panel{display:flex;flex-direction:column}
+.drawer__foot{padding:18px 20px calc(24px + env(safe-area-inset-bottom));border-top:1px solid #e2ded7;display:flex;flex-direction:column;gap:11px}
+.drawer__foot a{display:flex;justify-content:center;padding:15px 26px;border-radius:999px;font-weight:500;font-size:15px}
+.drawer__foot .d-a{background:var(--brand);color:#fff}
+.drawer__foot .d-b{border:1px solid rgba(17,18,20,.2);color:#111214;background:#fff}
+
+/* demo notice (shown once per visitor) */
+.demo-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;visibility:hidden;pointer-events:none;font-family:'Inter Tight',system-ui,sans-serif;line-height:1.6}
+.demo-modal.is-open{visibility:visible;pointer-events:auto}
+.demo-modal__bg{position:absolute;inset:0;background:rgba(17,18,20,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .45s ease}
+.demo-modal.is-open .demo-modal__bg{opacity:1}
+.demo-card{position:relative;width:min(600px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:#fff;border-radius:28px;display:block;box-shadow:0 40px 90px -30px rgba(17,18,20,.55);opacity:0;transform:translateY(24px) scale(.97);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
+.demo-modal.is-open .demo-card{opacity:1;transform:none;transition-delay:.08s}
+.demo-card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;z-index:2;background:linear-gradient(90deg,#930003,#c8332f,#7d8aa6)}
+.demo-from{display:flex;align-items:center;gap:14px;background:#f6f4f0;border:1px solid #e2ded7;border-radius:18px;padding:10px 16px 10px 10px;margin:22px 0 0}
+.demo-from img{width:56px;height:56px;border-radius:14px;object-fit:cover;flex:none}
+.demo-from b{display:block;color:#111214;font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.demo-from small{display:block;font-size:13px;line-height:1.4;color:#75777d}
+.demo-body{padding:clamp(28px,4vw,46px)}
+.demo-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#111214;background:#f6f4f0;border:1px solid #e2ded7;border-radius:999px;padding:6px 12px 6px 8px}
+.demo-tag i{width:16px;height:16px;border-radius:50%;background:conic-gradient(#930003,#c8332f,#7d8aa6,#930003)}
+.demo-body h2{font-family:'Inter Tight',system-ui,sans-serif;font-size:clamp(30px,3.4vw,42px);font-weight:600;line-height:1;margin:18px 0 14px;letter-spacing:-.035em;color:#111214;text-transform:none}
+.demo-body h2 .serif{font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:300;letter-spacing:-.01em;color:#3d3f44}
+.demo-body > p{font-size:16.5px;color:#3d3f44}
+.demo-list{list-style:none;margin:20px 0 26px;display:grid;gap:10px}
+.demo-list li{display:flex;gap:12px;font-size:15.5px;color:#111214;line-height:1.45}
+.demo-list svg{flex:none;width:20px;height:20px;margin-top:1px}
+.demo-note{font-size:13.5px;color:#75777d;border-top:1px solid #e2ded7;padding-top:16px;margin-bottom:22px}
+.demo-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.demo-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;font:inherit;font-weight:500;font-size:14.5px;cursor:pointer;border:1px solid rgba(17,18,20,.2);background:none;color:#111214;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s}
+.demo-btn svg{width:16px;height:16px}
+.demo-btn--ink{background:#111214;border-color:#111214;color:#fff}
+.demo-btn--ink:hover{transform:translateY(-2px);background:#26282c}
+.demo-close{position:absolute;z-index:3;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:1px solid #e2ded7;background:rgba(255,255,255,.92);color:#111214;display:grid;place-items:center;cursor:pointer;transition:border-color .2s}
+.demo-close:hover{border-color:#111214}
+.demo-close svg{width:16px;height:16px}
+.demo-more{position:sticky;bottom:0;z-index:4;display:flex;justify-content:center;margin-top:-96px;padding:44px 0 16px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 62%);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s linear .3s}
+.demo-more.show{opacity:1;visibility:visible;transition:opacity .3s,visibility 0s}
+.demo-more button{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;background:#111214;color:#fff;border:0;border-radius:999px;padding:11px 18px 11px 16px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 10px 24px -10px rgba(17,18,20,.6)}
+.demo-more svg{width:16px;height:16px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.demo-reopen{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.demo-reopen:hover{text-decoration:underline}
+@media (max-width:760px){
+  .demo-card{border-radius:24px}
+  .demo-body{padding:24px 22px 26px}
+  .demo-body h2{font-size:28px;margin-top:14px}
+  .demo-list{margin:16px 0 20px}
+  .demo-btn{flex:1 1 100%;justify-content:center}
+}
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media (max-width:1080px){
+  .nav__links,.nav__right .btn{display:none}.nav__toggle{display:inline-flex}
+  .header-inner{padding:9px 10px 9px 14px}
+  .brand img,.site-header.is-solid .brand img{height:40px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+/* footer */
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:48px;padding:80px 0 60px}
+.foot-logo{height:60px;width:auto}
+.foot-about p{margin:22px 0 22px;max-width:38ch;font-size:15.5px}
+.foot-accred{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.foot-accred img{height:44px;width:auto;background:#fff;border-radius:6px;padding:3px}
+.foot-col h4{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;opacity:.65}
+.foot-col a{display:block;overflow-wrap:anywhere;font-size:15.5px;padding:5px 0;width:fit-content;background:linear-gradient(90deg,var(--brand),var(--brand)) no-repeat left bottom/0 1.5px;transition:background-size .3s}
+.foot-col a:hover{background-size:100% 1.5px}
+.foot-col p{font-size:14px;margin-top:14px;line-height:1.5;opacity:.7}
+.foot-bottom{border-top:1px solid var(--foot-line);padding:24px 0 30px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13.5px}
+.foot-bottom nav{display:flex;gap:20px}
+.foot-bottom a:hover{text-decoration:underline}
+.foot-bottom b{font-weight:600}
+@media (max-width:960px){
+  .foot-top{grid-template-columns:1fr 1fr;gap:36px 24px;padding:60px 0 40px}
+  .foot-about{grid-column:1/-1}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+/* DESIGN 1: BLUEPRINT. Technical drawing language: graph paper, hairlines, dimension lines, mono specs */
+:root{--brand:#930003;--hd-fg:#14181d;--ink:#14181d;--body:#41464d;--mid:#757b83;--line:#d5d7d3;--paper:#f2f3ef;--steel:#7d8aa6;--foot-line:var(--line);
+  --sans:'Inter Tight',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--wrap:min(1280px,100% - 56px);--ease:cubic-bezier(.2,.8,.2,1)}
+body{background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.wrap{width:var(--wrap);margin-inline:auto}
+h1,h2,h3{color:var(--ink);font-weight:600;letter-spacing:-.035em;line-height:1}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--mid)}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--mid)}
+.tag::before{content:"";width:22px;height:9px;border:solid var(--brand);border-width:0 1.5px 1.5px;flex:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:500;font-size:15px;transition:transform .35s var(--ease),background .3s,border-color .3s,color .3s}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:#7a0002;transform:translateY(-2px)}
+.btn-line{border:1px solid rgba(20,24,29,.25);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:136px 0 0;background-image:linear-gradient(rgba(20,24,29,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(20,24,29,.055) 1px,transparent 1px);background-size:32px 32px;background-position:center top}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding-bottom:50px}
+.hero h1{font-size:clamp(46px,6.3vw,96px);margin:24px 0 26px;letter-spacing:-.045em;line-height:.96}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p{font-size:19px;max-width:520px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-draw{width:100%;overflow:visible}
+.hero-draw .ln{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.6s var(--ease) forwards}
+.hero-draw .dim{stroke:var(--brand);stroke-width:1;fill:none}
+.hero-draw text{font-family:var(--mono);font-size:11px;fill:var(--brand)}
+.hero-draw .late{opacity:0;animation:fi .7s ease 1.9s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+@keyframes fi{to{opacity:1}}
+.spec-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.spec-strip div{padding:16px 18px 18px 0;font-size:15px;color:var(--ink);font-weight:500;line-height:1.3}
+.spec-strip div+div{border-left:1px solid var(--line);padding-left:18px}
+.spec-strip small{display:block;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;color:var(--mid);font-weight:400;margin-bottom:6px}
+
+/* figure band */
+.fig{position:relative;height:min(82vh,760px);overflow:hidden;background:var(--ink)}
+.fig img{width:100%;height:116%;object-fit:cover;object-position:50% 60%;will-change:transform}
+.fig .cap{position:absolute;left:0;right:0;bottom:0;padding:70px 0 22px;background:linear-gradient(0deg,rgba(10,12,15,.72),transparent);color:#fff}
+.fig .cap .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;text-transform:uppercase}
+.tick{position:absolute;width:26px;height:26px;border:solid #fff;opacity:.85}
+.tick.a{top:22px;left:22px;border-width:1.5px 0 0 1.5px}.tick.b{top:22px;right:22px;border-width:1.5px 1.5px 0 0}
+
+/* about */
+.pad{padding:clamp(84px,10vw,140px) 0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about h2{font-size:clamp(36px,4.2vw,62px);margin-top:20px}
+.about p{margin-bottom:20px;font-size:18px}
+.spec{margin-top:70px;border-top:1px solid var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
+.spec>div{padding:24px 24px 0 0}
+.spec .n{font-size:clamp(44px,5vw,74px);font-weight:600;color:var(--ink);letter-spacing:-.045em;line-height:1}
+.spec .n sup{font-size:.5em;color:var(--brand);vertical-align:.5em;font-weight:500}
+.spec p{font-family:var(--mono);font-size:12px;text-transform:uppercase;margin-top:12px;line-height:1.5;color:var(--mid);max-width:26ch}
+
+/* services table */
+.services{background:#fff;border-block:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px}
+.sec-head h2{font-size:clamp(36px,4.4vw,66px);margin-top:18px;max-width:15ch}
+.sec-head p{max-width:44ch;color:var(--mid)}
+.svc{display:grid;grid-template-columns:70px 1fr 1.25fr 170px;gap:24px;align-items:center;padding:22px 0;border-top:1px solid var(--line);transition:padding .4s var(--ease)}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc .i{font-family:var(--mono);font-size:13px;color:var(--brand)}
+.svc h3{font-size:clamp(23px,2.2vw,32px);letter-spacing:-.025em;transition:transform .4s var(--ease)}
+.svc p{font-size:15.5px;line-height:1.55}
+.svc .th{height:96px;overflow:hidden;border-radius:4px;transition:height .45s var(--ease)}
+.svc .th img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.svc:hover h3{transform:translateX(8px)}
+.svc:hover .th{height:136px}
+.svc:hover .th img{transform:scale(1.05)}
+
+/* process */
+.process{background-color:#101419;background-image:linear-gradient(rgba(125,138,166,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(125,138,166,.08) 1px,transparent 1px);background-size:32px 32px;color:#b9bec6}
+.process h2,.process h3{color:#fff}
+.process .tag{color:#8b94a3}.process .tag::before{border-color:#e05a4e}
+.p-scroll{height:460vh;position:relative}
+.p-sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.p-left h2{font-size:clamp(34px,3.8vw,56px);margin:18px 0 30px}
+.p-steps{position:relative;min-height:290px}
+.step{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
+.step.on{opacity:1;transform:none}
+.step .k{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;color:#e05a4e}
+.step h3{font-size:clamp(26px,2.6vw,38px);margin:12px 0 14px}
+.step p{max-width:44ch;font-size:17px}
+.p-ticks{display:flex;gap:6px;margin-top:6px}
+.p-ticks i{height:3px;flex:1;background:rgba(255,255,255,.14);overflow:hidden;position:relative}
+.p-ticks i::after{content:"";position:absolute;inset:0;background:#e05a4e;transform:scaleX(var(--f,0));transform-origin:left}
+.btn-next{margin-top:22px;border:1px solid rgba(255,255,255,.3);color:#fff;padding:12px 20px;font-size:14.5px}
+.btn-next:hover{border-color:#fff}
+.btn-next:hover svg{transform:translateY(3px)}
+#build{width:100%;max-height:78vh;overflow:visible}
+#build line,#build path.ln{stroke-linecap:round;fill:none}
+#build text{font-family:var(--mono);font-size:10.5px;fill:#e05a4e}
+
+/* case sheets */
+.sheets{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.sheet{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+.sheet:nth-child(1){grid-column:span 7}.sheet:nth-child(2){grid-column:span 5}.sheet:nth-child(3){grid-column:span 5}.sheet:nth-child(4){grid-column:span 7}
+.sheet .im{overflow:hidden;flex:1;min-height:340px;position:relative}
+.sheet .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.sheet:hover .im img{transform:scale(1.035)}
+.title-block{border-top:1px solid var(--ink);display:grid;grid-template-columns:1fr auto}
+.title-block h3{font-size:22px;letter-spacing:-.02em;padding:16px 18px;line-height:1.15}
+.title-block span{font-family:var(--mono);font-size:12px;color:var(--brand);padding:18px;border-left:1px solid var(--line)}
+.sheet dl{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.sheet dl div{padding:12px 18px}.sheet dl div+div{border-left:1px solid var(--line)}
+.sheet dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--mid)}
+.sheet dd{color:var(--ink);font-weight:500;font-size:15.5px;line-height:1.3;margin-top:2px}
+
+/* quick quote */
+.sizer{background-color:#101419;background-image:linear-gradient(rgba(125,138,166,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(125,138,166,.08) 1px,transparent 1px);background-size:32px 32px;color:#b9bec6;border-radius:6px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center}
+.sizer .tag{color:#8b94a3}.sizer .tag::before{border-color:#e05a4e}
+.sizer h2{color:#fff;font-size:clamp(36px,4.4vw,62px);margin:16px 0 14px}
+.sizer h2 em{font-style:normal;color:#e05a4e}
+.field{margin-top:20px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;color:#fff;margin-bottom:8px}
+.field output{font-family:var(--mono);font-size:14px;color:#e05a4e}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:rgba(255,255,255,.2);outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--brand);cursor:grab}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:6px solid var(--brand);cursor:grab}
+.uses{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.uses button{font:inherit;font-size:14px;color:#fff;background:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 15px;cursor:pointer;transition:background .2s,color .2s}
+.uses button[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.sz-view{border:1px solid rgba(255,255,255,.14);background:rgba(16,20,25,.7);padding:20px;display:flex;flex-direction:column;gap:14px}
+.sz-cap{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:#e05a4e;line-height:1.5}
+#sizerSvg{width:100%;height:clamp(240px,27vw,370px);display:block}
+.sz-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:#fff;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.sz-foot b{font-size:30px;font-weight:600;letter-spacing:-.03em;display:block;line-height:1.1}
+.sz-foot small{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;color:#8b94a3}
+
+/* testimonials */
+.testi{background:#fff;border-block:1px solid var(--line);overflow:hidden;padding:clamp(84px,10vw,140px) 0;margin-top:clamp(84px,10vw,140px)}
+.testi .sec-head{margin-bottom:32px}
+.testi h2 em{font-style:normal;color:var(--brand)}
+.row{display:flex;gap:16px;width:max-content;animation:drift 70s linear infinite;margin-top:16px}
+.row:hover{animation-play-state:paused}
+.row.rev{animation-direction:reverse}
+@keyframes drift{to{transform:translateX(-50%)}}
+.tc{width:400px;background:var(--paper);border:1px solid var(--line);padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.tc blockquote{color:var(--ink);font-size:18.5px;line-height:1.42;letter-spacing:-.01em}
+.tc figcaption{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--mid);line-height:1.5}
+.tc figcaption b{display:block;color:var(--brand);font-weight:500}
+
+/* contact */
+.cta{padding:clamp(70px,8vw,110px) 0;background:var(--brand);color:#f3d8d8;position:relative;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+.cta .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:end}
+.cta h2{color:#fff;font-size:clamp(44px,6.2vw,96px);letter-spacing:-.045em;line-height:.96}
+.cta p{font-size:18px;margin-bottom:26px}
+.cta .btn-w{background:#fff;color:var(--brand)}
+.cta .btn-w:hover{transform:translateY(-2px)}
+.cta .btn-o{border:1px solid rgba(255,255,255,.4);color:#fff}
+.cta .btn-o:hover{border-color:#fff}
+.site-footer{background:#fff;color:var(--body)}
+.foot-col a,.foot-bottom b{color:var(--ink)}
+.foot-bottom{color:var(--mid)}
+
+/* enquiry pop-up */
+.eq-modal{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px;visibility:hidden;pointer-events:none}
+.eq-modal.is-open{visibility:visible;pointer-events:auto}
+.eq-bg{position:absolute;inset:0;background:rgba(16,20,25,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .35s ease}
+.eq-modal.is-open .eq-bg{opacity:1}
+.eq-card{position:relative;width:min(640px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:#fff;border-top:4px solid var(--brand);border-radius:6px;padding:clamp(24px,4vw,42px);box-shadow:0 40px 90px -30px rgba(16,20,25,.6);opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.eq-modal.is-open .eq-card{opacity:1;transform:none}
+.eq-x{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .2s}
+.eq-x:hover{border-color:var(--ink)}
+.eq-x svg{width:16px;height:16px}
+.eq-card h2{font-size:clamp(30px,3.6vw,44px);margin:14px 0 8px;padding-right:40px}
+.eq-lead{font-size:16px;margin-bottom:22px}
+.eq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.eq-w{grid-column:1/-1}
+.eq-f label{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.eq-f input,.eq-f select,.eq-f textarea{display:block;width:100%;font:inherit;font-size:16px;line-height:1.4;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:12px 14px;transition:border-color .2s,background .2s}
+.eq-f textarea{resize:vertical;min-height:112px}
+.eq-f input:focus,.eq-f select:focus,.eq-f textarea:focus{outline:0;border-color:var(--brand);background:#fff;box-shadow:0 0 0 1px var(--brand)}
+.eq-send{margin-top:22px;border:0;cursor:pointer;font-family:inherit}
+.eq-note{font-size:13.5px;line-height:1.5;color:var(--mid);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.eq-note a{color:var(--brand);font-weight:500}
+.eq-done:focus{outline:0}
+.eq-done p{font-size:17px;margin-bottom:24px}
+.eq-done b{color:var(--ink);font-weight:600}
+.eq-done .btn{border:0;cursor:pointer;font-family:inherit}
+
+@media (max-width:1080px){
+  :root{--wrap:calc(100% - 40px)}
+  .hero{padding-top:110px}
+  .hero-grid,.about,.cta .wrap{grid-template-columns:1fr;gap:34px}
+  .spec-strip,.spec{grid-template-columns:1fr 1fr}
+  .spec-strip div:nth-child(3){border-left:0;padding-left:0}
+  .spec-strip div:nth-child(n+3){border-top:1px solid var(--line)}
+  .spec{row-gap:26px}
+  .svc{grid-template-columns:44px 1fr;row-gap:10px}
+  .svc p{grid-column:2}.svc .th{display:none}
+  .p-scroll{height:auto}
+  .p-sticky{position:static;height:auto;display:flex;flex-direction:column;gap:0;padding:80px 0}
+  .p-left{display:contents}
+  .p-left .tag{order:1;align-self:flex-start}.p-left h2{order:2}.p-steps{order:4}.btn-next{order:5;align-self:flex-start;margin-top:34px}
+  .p-graphic{order:3;position:sticky;top:0;z-index:2;width:100%;background:#101419;padding:14px 0 8px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12)}
+  #build{max-height:34vh;display:block;margin:auto}
+  .p-steps{min-height:0;display:grid;gap:34px}
+  .p-ticks{display:none}
+  .step{position:static;opacity:.45;transform:none;pointer-events:auto;transition:opacity .4s}
+  .step.on,.step.seen{opacity:1}
+  .sheets{grid-template-columns:1fr}.sheet:nth-child(n){grid-column:auto}
+  .sheet .im{min-height:0;aspect-ratio:4/3}
+  .sizer{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:560px){
+  .eq-grid{grid-template-columns:1fr}
+  .eq-send{width:100%;justify-content:center}
+  .tc{width:300px}
+  .tc blockquote{font-size:17px}
+  .sz-foot .btn{width:100%;justify-content:center}
+  .sheet dl{grid-template-columns:1fr 1fr 1fr}.sheet dl div{padding:10px 12px}
+  .sheet dd{font-size:14px}
+  .fig{height:58vh}
+  .fig .cap .wrap{font-size:11px}
+}
+
+</style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#" aria-label="South West Steel Construction, home"><img src="assets/logo.png" alt="South West Steel Construction Ltd" width="125" height="50"></a>
+    <nav class="nav__links" aria-label="Primary">
+      <span class="has-sub" aria-expanded="false">
+        <button type="button" aria-expanded="false">Services
+          <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <span class="subnav">
+          <a href="#services"><i></i><span><strong>Steel Frame Buildings</strong><small>Kit or bespoke, any size, any purpose</small></span></a>
+          <a href="#services"><i></i><span><strong>Metal Building Kits</strong><small>Warehouses, workshops and garages</small></span></a>
+          <a href="#services"><i></i><span><strong>Galvanising</strong><small>Quick turnaround, beams to garden gates</small></span></a>
+          <a href="#services"><i></i><span><strong>Planning Service</strong><small>Drawings to support your application</small></span></a>
+          <a href="#services"><i></i><span><strong>Design Process</strong><small>In-house 3D modelling and detailing</small></span></a>
+          <a href="#services"><i></i><span><strong>Site Surveys</strong><small>Free site visits throughout the UK</small></span></a>
+        </span>
+      </span>
+      <a href="#about">About</a>
+      <a href="#projects">Case studies</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Get in touch</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn-primary" href="#contact">Get a quote</a>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="drawer__head">
+    <span class="drawer__brand"><img src="assets/logo.png" alt=""></span>
+    <button class="drawer__close" id="drawerClose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <nav class="drawer__links" aria-label="Mobile">
+    <a href="#">Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button class="drawer__acc" type="button" aria-expanded="false" aria-controls="drawerServices">
+      <span>Services</span>
+      <svg class="drawer__chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+    </button>
+    <div class="drawer__panel" id="drawerServices" hidden>
+      <a class="sub" href="#services">Steel Frame Buildings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sub" href="#services">Metal Building Kits <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sub" href="#services">Galvanising <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sub" href="#services">Planning Service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sub" href="#services">Design Process <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sub" href="#services">Site Surveys <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <a href="#about">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#projects">Case studies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#testimonials">Testimonials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#contact">Get in touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </nav>
+  <div class="drawer__foot">
+    <a class="d-a" href="tel:+441409253211">Call 01409 253211</a>
+    <a class="d-b" href="mailto:info@southweststeelconstruction.co.uk">Email the team</a>
+  </div>
+</aside>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag rv">Holsworthy, Devon · Serving the whole of the UK</span>
+      <h1 class="rv d1">Home of steel frame building <em>construction.</em></h1>
+      <p class="rv d2">We turn your vision into reality with high-quality, bespoke steel frame buildings. Structures built to last, with a personal touch every step of the way.</p>
+      <div class="ctas rv d3">
+        <a href="#contact" class="btn btn-primary" data-enquire="quote">Get a quote <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#process" class="btn btn-line">How we build</a>
+      </div>
+    </div>
+    <svg class="hero-draw" id="heroFrame" role="img" aria-label="Line drawing of a steel portal frame building"></svg>
+  </div>
+  <div class="wrap spec-strip rv">
+    <div><small>Experience</small>Over 30 years in the industry</div>
+    <div><small>Quality</small>BS EN ISO 9001:2015 and UKCA marked</div>
+    <div><small>Site visits</small>Free, anywhere in the UK</div>
+    <div><small>Delivery</small>Our own fleet, nationwide</div>
+  </div>
+</section>
+
+<figure class="fig">
+  <img id="figImg" src="assets/sk-exterior.jpg" alt="Anthracite steel-framed apex building under a blue sky">
+  <span class="tick a"></span><span class="tick b"></span>
+  <figcaption class="cap"><div class="wrap"><span>Fig. 01 · Steel-framed apex building, SK Contractors</span><span>80ft × 60ft × 16ft eaves</span></div></figcaption>
+</figure>
+
+<section class="pad" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div><span class="tag rv">Who we are</span><h2 class="rv d1">The South West's trusted partner in bespoke steel frame buildings.</h2></div>
+      <div class="rv d2">
+        <p>Our own purpose-built factory sits right in the heart of Devon, equipped with cutting edge technology and staffed by our very own highly skilled team. We build for the agricultural, industrial and equestrian industries across the whole of the UK.</p>
+        <p>Our in-house service means that from the initial design to the grand reveal, we handle every stage of your project. Whether it's a barn to protect your livestock, a warehouse to support your growing business or a custom-built riding arena, you are in trusted hands.</p>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="rv"><div class="n"><span data-count="30">0</span><sup>+</sup></div><p>Years of experience in the industry</p></div>
+      <div class="rv d1"><div class="n"><span data-count="6">0</span></div><p>Services under one roof, from survey to steel</p></div>
+      <div class="rv d2"><div class="n"><span data-count="5">0</span></div><p>Days a week our factory is in operation</p></div>
+      <div class="rv d3"><div class="n"><span data-count="2">0</span><sup>day</sup></div><p>Galvanising turnaround time</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad services" id="services">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="tag rv">Services</span><h2 class="rv d1">Everything your building needs.</h2></div><p class="rv d2">Kit buildings or bespoke, we can manufacture any size of steel building you require, and tailor the design around you.</p></div>
+    <div class="svc rv"><span class="i">01</span><h3>Steel Frame Buildings</h3><p>Whatever purpose your building is for, we can tailor the design around you and your specific requirements.</p><div class="th"><img src="assets/ind-frame.jpg" alt="Galvanised steel frame on site" loading="lazy"></div></div>
+    <div class="svc rv"><span class="i">02</span><h3>Metal Building Kits</h3><p>An efficient, cost-effective route to warehouses, workshops and garages, designed to follow British regulations.</p><div class="th"><img src="assets/lorry.jpg" alt="Lorry loaded with galvanised steelwork" loading="lazy"></div></div>
+    <div class="svc rv"><span class="i">03</span><h3>Galvanising</h3><p>From structural beams to garden gates. Protects your steel, increases durability and prolongs its life, with a swift 2-day turnaround.</p><div class="th"><img src="assets/factory-steel.jpg" alt="Fabricated steel in the factory" loading="lazy"></div></div>
+    <div class="svc rv"><span class="i">04</span><h3>Planning Service</h3><p>Our team provides the drawings to support your application. Planning drawings are refundable when you order the building.</p><div class="th"><img src="assets/drawings.jpg" alt="Fabrication drawings on the shop floor" loading="lazy"></div></div>
+    <div class="svc rv"><span class="i">05</span><h3>Design Process</h3><p>Our trained steel draughtsmen model every building in 3D using Tekla, from frame and connections to roof and cladding.</p><div class="th"><img src="assets/rafter.jpg" alt="Curved rafter being fabricated" loading="lazy"></div></div>
+    <div class="svc rv"><span class="i">06</span><h3>Site Surveys</h3><p>Completely free, professional site visits anywhere in the UK, with a Total Station that captures every existing dimension.</p><div class="th"><img src="assets/ind-green.jpg" alt="Surveying on site beside a finished green building" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="p-scroll" id="pscroll">
+    <div class="wrap p-sticky">
+      <div class="p-left">
+        <span class="tag">How we build</span>
+        <h2>From an empty field to the grand reveal.</h2>
+                <div class="p-steps" id="psteps">
+          <div class="step on"><span class="k">Stage 01 · Survey</span><h3>We come to you.</h3><p>Our friendly experts visit your site, advise on the most affordable way to design your building, and check every measurement and level before anything is manufactured.</p></div>
+          <div class="step"><span class="k">Stage 02 · Design</span><h3>Modelled in 3D, in-house.</h3><p>Our draughtsmen build a Tekla model of your building, then produce fabrication drawings designed to be easily understood on the shop floor, reducing any risk of error.</p></div>
+          <div class="step"><span class="k">Stage 03 · Fabricate</span><h3>Made in our Devon factory.</h3><p>Certified coded fabricators turn those drawings into stanchions and rafters in our large, modern, purpose-built factory, five days a week.</p></div>
+          <div class="step"><span class="k">Stage 04 · Deliver</span><h3>On our own lorries.</h3><p>Load lists are planned in the design office, then purlins, bracing and steelwork arrive on time with our own fleet of delivery vehicles.</p></div>
+          <div class="step"><span class="k">Stage 05 · Complete</span><h3>Built for today and tomorrow.</h3><p>Roof, cladding and finishes complete a quality-assured building that works for you today, tomorrow and for years to come.</p></div>
+        </div>
+        <div class="p-ticks" id="pticks"><i></i><i></i><i></i><i></i><i></i></div>
+        <a class="btn btn-next" href="#projects">Next section <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="p-graphic"><svg id="build" role="img" aria-label="A steel building being assembled stage by stage"></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="projects">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="tag rv">Case studies</span><h2 class="rv d1">Recently drawn, built and delivered.</h2></div><p class="rv d2">We have buildings all over the UK and Ireland, and even as far as the Republic of Yemen.</p></div>
+    <div class="sheets">
+      <article class="sheet rv"><div class="im"><img src="assets/cattle-front.jpg" alt="Timber boarded cattle shed with a concrete apron" loading="lazy" style="object-position:50% 62%"></div><div class="title-block"><h3>Two new cattle sheds, Dorset</h3><span>SWS / 01</span></div><dl><div><dt>Each</dt><dd>120ft × 40ft</dd></div><div><dt>Eaves</dt><dd>15ft</dd></div><div><dt>Bays</dt><dd>15ft</dd></div></dl></article>
+      <article class="sheet rv d1"><div class="im"><img src="assets/cubicle-interior.jpg" alt="Interior of a cubicle shed with red cubicles" loading="lazy"></div><div class="title-block"><h3>100' × 103' cubicle shed</h3><span>SWS / 02</span></div><dl><div><dt>Centre span</dt><dd>57'</dd></div><div><dt>Eaves</dt><dd>5.5m</dd></div><div><dt>Roof lights</dt><dd>30</dd></div></dl></article>
+      <article class="sheet rv"><div class="im"><img src="assets/storage-exterior.jpg" alt="Merlin Grey steel storage building with two large doors" loading="lazy"></div><div class="title-block"><h3>Rural storage building</h3><span>SWS / 03</span></div><dl><div><dt>Size</dt><dd>30m × 21m</dd></div><div><dt>Eaves</dt><dd>6m</dd></div><div><dt>Pitch</dt><dd>12.5°</dd></div></dl></article>
+      <article class="sheet rv d1"><div class="im"><img src="assets/industrial-aerial.jpg" alt="Aerial view of a steel-framed industrial building" loading="lazy" style="object-position:50% 55%"></div><div class="title-block"><h3>Steel framed industrial building</h3><span>SWS / 04</span></div><dl><div><dt>Size</dt><dd>30m × 16m</dd></div><div><dt>Eaves</dt><dd>6.5m</dd></div><div><dt>Pitch</dt><dd>12.5°</dd></div></dl></article>
+    </div>
+  </div>
+</section>
+
+<section id="sizer">
+  <div class="wrap">
+    <div class="sizer rv">
+      <div>
+        <span class="tag">Quick quote</span>
+        <h2>Picture it. <em>Then send it to us.</em></h2>
+        <p>Move the sliders to get a feel for your building, then send the rough size to the team and we'll take it from there.</p>
+        <div class="field"><label for="szL">Length <output id="oL"></output></label><input type="range" id="szL" min="30" max="200" step="5" value="100"></div>
+        <div class="field"><label for="szW">Width <output id="oW"></output></label><input type="range" id="szW" min="20" max="100" step="5" value="50"></div>
+        <div class="field"><label for="szE">Height to eaves <output id="oE"></output></label><input type="range" id="szE" min="10" max="30" step="1" value="15"></div>
+        <div class="uses" id="uses" role="group" aria-label="What is the building for?">
+          <button type="button" aria-pressed="true">Livestock</button><button type="button" aria-pressed="false">Storage</button><button type="button" aria-pressed="false">Grain</button><button type="button" aria-pressed="false">Equestrian</button><button type="button" aria-pressed="false">Industrial</button>
+        </div>
+      </div>
+      <div class="sz-view">
+        <p class="sz-cap" id="szCap" aria-live="polite"></p>
+        <svg id="sizerSvg" role="img" aria-label="Drawing of your building at the chosen size"></svg>
+        <div class="sz-foot"><div><b id="oArea"></b><small>Floor area (illustrative)</small></div><a class="btn btn-primary" id="szSend" href="#contact" data-enquire="sizer">Send to the team <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testi" id="testimonials">
+  <div class="wrap sec-head"><div><span class="tag rv">Testimonials</span><h2 class="rv d1">From Truro <em>to Stirling.</em></h2></div></div>
+  <div class="row" id="r1"></div>
+  <div class="row rev" id="r2"></div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Let's draw up your building.</h2>
+    <div class="rv d1">
+      <p>Tell us what you need. If you find it hard to envision your new building, give us a call to arrange a free site visit.</p>
+      <div class="ctas"><a href="tel:+441409253211" class="btn btn-w">Call 01409 253211</a><a href="#contact" class="btn btn-o" data-enquire="general">Email the team</a><a href="#contact" class="btn btn-o" data-enquire="beams">Enquire for beams</a></div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap foot-top">
+    <div class="foot-about">
+      <img class="foot-logo" src="assets/logo.png" alt="South West Steel Construction Ltd" width="150" height="60">
+      <p>High-quality, bespoke steel frame buildings for the agricultural, industrial and equestrian industries, made in our own factory in the heart of Devon.</p>
+      <div class="foot-accred"><img src="assets/accred-1.png" alt="BBA, UKAS and RIDBA accreditations" height="44"><img src="assets/accred-2.png" alt="Back British Farming" height="44"></div>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <a href="#services">Steel Frame Buildings</a>
+      <a href="#services">Metal Building Kits</a>
+      <a href="#services">Galvanising</a>
+      <a href="#services">Planning Service</a>
+      <a href="#services">Design Process</a>
+      <a href="#services">Site Surveys</a>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#about">About</a>
+      <a href="#about">Our factory</a>
+      <a href="#projects">Case studies</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Enquire for beams</a>
+    </div>
+    <div class="foot-col">
+      <h4>Get in touch</h4>
+      <a href="tel:+441409253211">01409 253211</a>
+      <a href="mailto:info@southweststeelconstruction.co.uk">info@southweststeelconstruction.co.uk</a>
+      <p>South West Steel Construction Ltd, Holsworthy Industrial Estate, Holsworthy, Devon EX22 6ER</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 South West Steel Construction Ltd</span>
+    <nav aria-label="Legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></nav>
+    <span><button class="demo-reopen" type="button" data-demo-open>About this demo</button> · <a class="sr" href="https://saturnresults.co.uk/harry" target="_blank" rel="noopener">Designed &amp; built by <b>Harry Bingham</b> at <b>Saturn Results</b></a></span>
+  </div>
+</footer>
+
+<div class="eq-modal" id="eqModal" role="dialog" aria-modal="true" aria-labelledby="eqTitle" aria-hidden="true">
+  <div class="eq-bg" data-eq-close></div>
+  <div class="eq-card">
+    <button class="eq-x" type="button" aria-label="Close" data-eq-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <form id="eqForm">
+      <span class="tag">Enquiry</span>
+      <h2 id="eqTitle">Get a quote</h2>
+      <p class="eq-lead">Tell us what you need and the team will get back to you.</p>
+      <div class="eq-grid">
+        <div class="eq-f"><label for="eqName">Name</label><input id="eqName" name="name" type="text" autocomplete="name" required></div>
+        <div class="eq-f"><label for="eqPhone">Phone</label><input id="eqPhone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="eq-f"><label for="eqEmail">Email</label><input id="eqEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="eq-f"><label for="eqService">Service required</label><select id="eqService" name="service"><option>Steel Frame Buildings</option><option>Metal Building Kits</option><option>Beams</option><option>Galvanising</option><option>Planning Service</option><option>Design Process</option><option>Site Surveys</option></select></div>
+        <div class="eq-f eq-w"><label for="eqMsg">Your project</label><textarea id="eqMsg" name="message" rows="5" required></textarea></div>
+      </div>
+      <button class="btn btn-primary eq-send" type="submit">Send enquiry <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <p class="eq-note">Preview only: this form doesn't send anywhere yet. To reach the team today, call <a href="tel:+441409253211">01409 253211</a>.</p>
+    </form>
+    <div class="eq-done" id="eqDone" hidden tabindex="-1">
+      <span class="tag">Preview</span>
+      <h2 id="eqDoneTitle">Thanks.</h2>
+      <p>This is how the confirmation will look. As this is a preview, <b>your enquiry hasn't been sent</b> and nothing you typed has been saved. On the finished site it would go straight to the South West Steel team.</p>
+      <button class="btn btn-primary" type="button" data-eq-close>Back to the site</button>
+    </div>
+  </div>
+</div>
+
+<div class="demo-modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoTitle" aria-hidden="true">
+  <div class="demo-modal__bg" data-close></div>
+  <div class="demo-card">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#930003"/><stop offset=".5" stop-color="#c8332f"/><stop offset="1" stop-color="#7d8aa6"/></linearGradient></defs></svg>
+    <button class="demo-close" type="button" aria-label="Close" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="demo-body">
+      <span class="demo-tag"><i></i>Website preview</span>
+      <h2 id="demoTitle">A first look at <span class="serif">your new website.</span></h2>
+      <p>Hi there, I'm Harry from Saturn Results. I've designed this preview to give you a real feel for how we'd bring South West Steel Construction online. Have a good look around, scroll through everything and try it on your phone too.</p>
+      <div class="demo-from"><img src="assets/harry-face.jpg" alt="Harry Bingham"><div><b>Harry Bingham</b><small>Saturn Results · Web design &amp; development</small></div></div>
+      <ul class="demo-list">
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="url(#dg)" stroke-width="1.6"/><path d="M6 10.4l2.6 2.5L14 7.5" stroke="#111214" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Everything is yours to shape. Every word, colour, photo and section can be changed.</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="url(#dg)" stroke-width="1.6"/><path d="M6 10.4l2.6 2.5L14 7.5" stroke="#111214" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The full build goes further: multiple pages, a complete SEO setup, working contact forms and more.</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="url(#dg)" stroke-width="1.6"/><path d="M6 10.4l2.6 2.5L14 7.5" stroke="#111214" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The copy and photos have been adapted from your current website, so it still sounds like you.</span></li>
+      </ul>
+      <p class="demo-note">This is a design preview rather than the finished site, built to show the look, feel and quality you can expect.</p>
+      <div class="demo-ctas">
+        <button class="demo-btn demo-btn--ink" type="button" data-close data-first>Explore the demo <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <a class="demo-btn" href="https://saturnresults.co.uk/harry" target="_blank" rel="noopener">Learn more about Harry</a>
+      </div>
+    </div>
+    <div class="demo-more" id="demoMore"><button type="button" aria-label="Scroll down for more">Scroll for more <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+  </div>
+</div>
+
+<script>
+const DEMO_KEY='sws-demo-seen-design-1';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+(() => {
+  /* ---- demo notice: opens on a visitor's first visit, reopen from the footer ---- */
+  const dm = document.getElementById('demoModal');
+  let dmLast = null;
+  function dmKey(e){
+    if (e.key === 'Escape') return closeDemo();
+    if (e.key !== 'Tab') return;
+    const f = [...dm.querySelectorAll('a[href],button')].filter(el => el.offsetParent !== null);
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+  const dmCard = dm.querySelector('.demo-card'), dmMore = document.getElementById('demoMore');
+  // only show the scroll cue when the card's content runs past the screen, and hide it near the end
+  const dmCue = () => dmMore.classList.toggle('show', dmCard.scrollHeight - dmCard.clientHeight - dmCard.scrollTop > 60);
+  dmCard.addEventListener('scroll', dmCue, {passive: true});
+  addEventListener('resize', () => { if (dm.classList.contains('is-open')) dmCue(); });
+  dmMore.querySelector('button').addEventListener('click', () => dmCard.scrollTo({top: dmCard.scrollHeight, behavior: reduce ? 'auto' : 'smooth'}));
+  function openDemo(){
+    dmLast = document.activeElement;
+    dm.classList.add('is-open'); dm.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll'); document.addEventListener('keydown', dmKey);
+    dmCard.scrollTop = 0; requestAnimationFrame(dmCue);
+    setTimeout(() => { dm.querySelector('[data-first]').focus({preventScroll: true}); dmCard.scrollTop = 0; dmCue(); }, 350);
+  }
+  function closeDemo(){
+    dm.classList.remove('is-open'); dm.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll'); document.removeEventListener('keydown', dmKey);
+    try { localStorage.setItem(DEMO_KEY, '1'); } catch (e) {}
+    if (dmLast && dmLast.focus) dmLast.focus({preventScroll: true});
+  }
+  dm.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeDemo));
+  document.querySelectorAll('[data-demo-open]').forEach(el => el.addEventListener('click', openDemo));
+  let seen = false; try { seen = localStorage.getItem(DEMO_KEY) === '1'; } catch (e) {}
+  if (!seen || location.hash === '#demo') setTimeout(openDemo, 900);
+
+  /* ---- header ---- */
+  const header = document.getElementById('siteHeader'), hero = document.querySelector('.hero');
+  const heroEdge = () => hero ? Math.max(Math.min(hero.offsetHeight - 96, innerHeight * .8), 120) : 120;
+  let lastY = Math.max(scrollY, 0), up = 0, down = 0, floating = null;
+  function updateHeader(){
+    const y = Math.max(scrollY, 0);
+    if (y < lastY) { up += lastY - y; down = 0; } else if (y > lastY) { down += y - lastY; up = 0; }
+    lastY = y;
+    const pastHero = y > heroEdge();
+    if (pastHero !== floating) {
+      floating = pastHero;
+      header.classList.add('no-anim');
+      header.classList.toggle('is-solid', pastHero);
+      header.classList.toggle('is-hidden', pastHero);
+      void header.offsetWidth;
+      header.classList.remove('no-anim');
+      up = down = 0; return;
+    }
+    if (!pastHero) { header.classList.remove('is-hidden'); return; }
+    if (up > 6) header.classList.remove('is-hidden');
+    else if (down > 10) header.classList.add('is-hidden');
+  }
+  addEventListener('scroll', updateHeader, {passive: true});
+  addEventListener('resize', updateHeader);
+  updateHeader();
+
+  /* ---- mobile drawer ---- */
+  const toggle = document.getElementById('navToggle'), drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay'), closeBtn = document.getElementById('drawerClose');
+  let lastFocus = null;
+  const focusables = () => [...drawer.querySelectorAll('a[href],button:not([disabled])')].filter(el => el.offsetParent !== null);
+  function onKey(e){
+    if (e.key === 'Escape') return closeDrawer();
+    if (e.key !== 'Tab') return;
+    const f = focusables(); if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+  function openDrawer(){
+    lastFocus = document.activeElement;
+    drawer.classList.add('is-open'); overlay.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false'); toggle.setAttribute('aria-expanded', 'true'); toggle.setAttribute('aria-label', 'Close menu');
+    document.body.classList.add('no-scroll'); document.addEventListener('keydown', onKey);
+    const f = focusables(); if (f.length) f[0].focus();
+  }
+  function closeDrawer(returnFocus){
+    drawer.classList.remove('is-open'); overlay.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu');
+    document.body.classList.remove('no-scroll'); document.removeEventListener('keydown', onKey);
+    if (returnFocus !== false && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? closeDrawer() : openDrawer());
+  closeBtn.addEventListener('click', () => closeDrawer());
+  overlay.addEventListener('click', () => closeDrawer());
+  drawer.querySelectorAll('a[href]').forEach(a => a.addEventListener('click', () => closeDrawer(false)));
+  addEventListener('resize', () => { if (innerWidth > 1080 && drawer.classList.contains('is-open')) closeDrawer(false); });
+
+  /* ---- services dropdown: click/touch support (hover is CSS) ---- */
+  document.querySelectorAll('.has-sub > button').forEach(btn => {
+    const parent = btn.parentNode;
+    btn.addEventListener('click', e => { e.preventDefault(); const open = parent.getAttribute('aria-expanded') === 'true'; parent.setAttribute('aria-expanded', !open); btn.setAttribute('aria-expanded', !open); });
+    document.addEventListener('click', e => { if (!parent.contains(e.target)) { parent.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-expanded', 'false'); } });
+    parent.querySelectorAll('.subnav a').forEach(a => a.addEventListener('click', () => { parent.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-expanded', 'false'); }));
+  });
+
+  /* ---- drawer: services disclosure ---- */
+  document.querySelectorAll('.drawer__acc').forEach(btn => btn.addEventListener('click', () => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls')), open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !open); panel.hidden = open;
+  }));
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(el => {
+      const end = +el.dataset.count;
+      if (reduce) return el.textContent = end.toLocaleString('en-GB');
+      const t0 = performance.now();
+      (function tick(t){ const p = Math.min((t - t0) / 1700, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 4))).toLocaleString('en-GB'); if (p < 1) requestAnimationFrame(tick); })(t0);
+    });
+    io.unobserve(e.target);
+  }), {threshold: .12});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // anything in the opening view reveals straight away rather than waiting on the observer
+  requestAnimationFrame(() => document.querySelectorAll('.rv').forEach(el => { if (!el.querySelector('[data-count]') && el.getBoundingClientRect().top < innerHeight * .9) el.classList.add('in'); }));
+})();
+
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const iso = (x, y, z) => [(x - y) * .866, (x + y) * .5 - z];
+  const el = (svg, n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; };
+  const fit = (svg, pts, pad) => {
+    const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+    const x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad;
+    svg.setAttribute('viewBox', `${x0} ${y0} ${Math.max(...xs) - x0 + pad} ${Math.max(...ys) - y0 + pad}`);
+  };
+  // a portal frame: x runs along the building, y across the span
+  const model = (L, S, E, R, n) => {
+    const fr = [], bay = L / n;
+    for (let i = 0; i <= n; i++) { const x = i * bay; fr.push([[x, 0, 0], [x, 0, E], [x, S / 2, E + R], [x, S, E], [x, S, 0]].map(p => iso(...p))); }
+    return fr;
+  };
+
+  /* ---- hero: the frame draws itself on load ---- */
+  const hero = document.getElementById('heroFrame'), L = 200, S = 110, E = 62, R = 22, n = 5;
+  const hf = model(L, S, E, R, n), pts = hf.flat();
+  const dA = iso(0, S + 20, 0), dB = iso(L, S + 20, 0), dC = iso(L + 20, 0, 0), dD = iso(L + 20, S, 0);
+  fit(hero, pts.concat([dA, dB, dC, dD]), 34);
+  let delay = 0;
+  const hl = (a, b, w) => { const l = el(hero, 'line', {x1: a[0], y1: a[1], x2: b[0], y2: b[1], class: 'ln', pathLength: 1, 'stroke-width': w}); l.style.animationDelay = delay + 's'; delay += .035; };
+  hf.forEach((f, i) => { if (i < n) for (const k of [1, 2, 3]) hl(f[k], hf[i + 1][k], .9); });
+  hf.forEach(f => { for (let k = 0; k < 4; k++) hl(f[k], f[k + 1], 2.2); });
+  const dims = [[dA, dB, '30m'], [dC, dD, '16m']];
+  dims.forEach(([a, b, t]) => {
+    el(hero, 'line', {x1: a[0], y1: a[1], x2: b[0], y2: b[1], class: 'dim late'});
+    for (const p of [a, b]) el(hero, 'circle', {cx: p[0], cy: p[1], r: 2.4, fill: '#930003', class: 'late'});
+    const lbl = el(hero, 'text', {x: (a[0] + b[0]) / 2 + (a === dC ? 8 : -30), y: (a[1] + b[1]) / 2 + 18, class: 'late'}); lbl.textContent = t;
+  });
+
+  /* ---- figure parallax ---- */
+  const fig = document.getElementById('figImg');
+
+  /* ---- process: the building assembles as you scroll ---- */
+  const b = document.getElementById('build'), bL = 200, bS = 110, bE = 58, bR = 22, bn = 5;
+  const bf = model(bL, bS, bE, bR, bn);
+  const gA = iso(-14, -14, 0), gB = iso(bL + 14, -14, 0), gC = iso(bL + 14, bS + 14, 0), gD = iso(-14, bS + 14, 0);
+  fit(b, bf.flat().concat([gA, gB, gC, gD]), 26);
+  const stages = [[], [], [], [], []];
+  const add = (st, a, c, attrs) => { const l = el(b, 'line', Object.assign({x1: a[0], y1: a[1], x2: c[0], y2: c[1], pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 1}, attrs)); stages[st].push(l); };
+  const poly = (st, ps, fill) => { const p = el(b, 'polygon', {points: ps.map(q => q.join(',')).join(' '), fill, opacity: 0}); stages[st].push(p); return p; };
+  // cladding sits behind the steel so the frame still reads
+  const f0 = bf[0], fN = bf[bn];
+  poly(4, [f0[3], fN[3], fN[4], f0[4]], 'rgba(125,138,166,.26)');
+  poly(4, [f0[2], fN[2], fN[3], f0[3]], 'rgba(147,0,3,.34)');
+  poly(4, [f0[0], f0[1], f0[2], f0[3], f0[4]], 'rgba(125,138,166,.16)');
+  poly(4, [f0[1], fN[1], fN[2], f0[2]], 'rgba(255,255,255,.12)');
+  // 0 survey: ground plan
+  [[gA, gB], [gB, gC], [gC, gD], [gD, gA]].forEach(([p, q]) => add(0, p, q, {stroke: '#e05a4e', 'stroke-width': 1.2}));
+  for (let i = 0; i <= bn; i++) { const x = i * bL / bn; add(0, iso(x, 0, 0), iso(x, bS, 0), {stroke: 'rgba(224,90,78,.4)', 'stroke-width': .8}); }
+  // 1 design: ghost of the full frame
+  bf.forEach((f, i) => { for (let k = 0; k < 4; k++) add(1, f[k], f[k + 1], {stroke: 'rgba(125,138,166,.75)', 'stroke-width': .9}); if (i < bn) for (const k of [1, 2, 3]) add(1, f[k], bf[i + 1][k], {stroke: 'rgba(125,138,166,.75)', 'stroke-width': .9}); });
+  // 2 fabricate: stanchions and rafters
+  bf.forEach(f => { for (let k = 0; k < 4; k++) add(2, f[k], f[k + 1], {stroke: '#fff', 'stroke-width': 2.6, 'stroke-linecap': 'round'}); });
+  // 3 deliver: purlins, eaves beams and bracing
+  for (let i = 0; i < bn; i++) {
+    const a = bf[i], c = bf[i + 1];
+    for (const k of [1, 2, 3]) add(3, a[k], c[k], {stroke: '#cfd5df', 'stroke-width': 1.5});
+    const m = (p, q, t) => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+    for (const t of [.33, .66]) { add(3, m(a[1], a[2], t), m(c[1], c[2], t), {stroke: '#9aa3b2', 'stroke-width': .9}); add(3, m(a[2], a[3], t), m(c[2], c[3], t), {stroke: '#9aa3b2', 'stroke-width': .9}); }
+  }
+  add(3, bf[0][1], bf[1][2], {stroke: '#e05a4e', 'stroke-width': 1.1}); add(3, bf[4][2], bf[5][1], {stroke: '#e05a4e', 'stroke-width': 1.1});
+  const lbl = (t, p, st) => { const e = el(b, 'text', {x: p[0], y: p[1], opacity: 0}); e.textContent = t; stages[st].push(e); };
+  const mid1 = iso(bL / 2, bS + 14, 0), mid2 = iso(bL + 14, bS / 2, 0);
+  lbl('LENGTH', [mid1[0] - 44, mid1[1] + 16], 0); lbl('SPAN', [mid2[0] + 10, mid2[1] + 14], 0);
+
+  const setStage = (st, p) => stages[st].forEach((e, i) => {
+    const t = Math.min(Math.max(p * stages[st].length - i * .72, 0), 1);
+    if (e.tagName === 'line') e.setAttribute('stroke-dashoffset', 1 - t); else e.setAttribute('opacity', p > 0 ? Math.min(p * 2.4, 1) : 0);
+  });
+
+  const ps = document.getElementById('pscroll'), steps = [...document.querySelectorAll('.step')], ticks = [...document.querySelectorAll('#pticks i')];
+  let active = 0, ticking = false;
+  function frame(){
+    const fr = fig.parentNode.getBoundingClientRect();
+    if (!reduce && fr.bottom > 0 && fr.top < innerHeight) fig.style.transform = `translateY(${-fr.height * .16 * (innerHeight - fr.top) / (innerHeight + fr.height)}px)`;
+    let prog;
+    if (innerWidth > 1080) {
+      const r = ps.getBoundingClientRect();
+      prog = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+      const i = Math.min(4, Math.floor(prog * 5 * .999));
+      if (i !== active) { steps[active].classList.remove('on'); steps[i].classList.add('on'); active = i; }
+    } else {
+      // phone: the drawing stays pinned while the stages pass beneath it
+      const line = innerHeight * .62, tops = steps.map(s => s.getBoundingClientRect().top);
+      let i = 0; tops.forEach((t, k) => { if (t < line) i = k; });
+      const nxt = i < 4 ? tops[i + 1] : tops[4] - steps[4].offsetHeight;
+      const frac = Math.min(Math.max((line - tops[i]) / Math.max(nxt - tops[i], 1), 0), 1);
+      prog = (tops[0] > line) ? 0 : (i + frac) / 5;
+      steps.forEach((s, k) => { s.classList.toggle('on', k === i); s.classList.toggle('seen', k < i); });
+    }
+    if (reduce) prog = 1;
+    for (let s = 0; s < 5; s++) { const local = Math.min(Math.max(prog * 5 - s, 0), 1); setStage(s, local); if (ticks[s]) ticks[s].style.setProperty('--f', local); }
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(frame); ticking = true; } }, {passive: true});
+  addEventListener('resize', frame);
+  frame();
+})();
+
+(() => {
+
+  /* ---- building sizer ---- */
+  const NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('sizerSvg');
+  const $ = id => document.getElementById(id), szL = $('szL'), szW = $('szW'), szE = $('szE');
+  const iso = (x, y, z) => [(x - y) * .866, (x + y) * .5 - z];
+  const poly = (ps, fill, stroke) => { const p = document.createElementNS(NS, 'polygon'); p.setAttribute('points', ps.map(q => q.join(',')).join(' ')); p.setAttribute('fill', fill); if (stroke) { p.setAttribute('stroke', stroke); p.setAttribute('stroke-width', .9); p.setAttribute('stroke-linejoin', 'round'); } svg.appendChild(p); };
+  const line = (a, b, c, w) => { const l = document.createElementNS(NS, 'line'); l.setAttribute('x1', a[0]); l.setAttribute('y1', a[1]); l.setAttribute('x2', b[0]); l.setAttribute('y2', b[1]); l.setAttribute('stroke', c); l.setAttribute('stroke-width', w); svg.appendChild(l); };
+  let use = 'Livestock';
+  // each building type changes the materials, openings and details of the drawing
+  const TYPES = {
+    Livestock: {wall: '#7d5f3d', gable: '#8a6a45', panel: 5, roof: '#6f7782', rib: 2.5, ribC: 'rgba(25,16,8,.5)', over: 6, cap: 'Yorkshire boarding · concrete panels · open feed passage'},
+    Storage: {wall: '#566070', gable: '#616c7d', panel: 4, roof: '#8a919b', rib: 3, ribC: 'rgba(16,20,25,.3)', over: 0, cap: 'Steel sheeting · roller door · rooflights'},
+    Grain: {wall: '#2f5a3f', gable: '#376849', panel: .55, roof: '#7d8590', rib: 3, ribC: 'rgba(8,20,12,.35)', over: 0, cap: 'Tall concrete panels · wide doors · ridge vents'},
+    Equestrian: {wall: '#94703f', gable: '#a07a47', panel: 3, roof: '#2f4a3a', rib: 2.5, ribC: 'rgba(25,16,8,.45)', over: 8, cap: 'Timber boarding · stable doors · covered overhang'},
+    Industrial: {wall: '#2c323b', gable: '#353c47', panel: 3, roof: '#7a1416', rib: 0, ribC: 'rgba(207,213,223,.2)', over: 0, cap: 'Composite panels · roller shutters · rooflights'}
+  };
+  function draw(){
+    const L = +szL.value, W = +szW.value, E = +szE.value, R = W * .11, T = TYPES[use];
+    // the view tightens part-way to the building, so sizes still compare but small ones stay readable
+    const top = Math.min(-L / 4 - E - R, -(L + W) / 4 - E), bot = (L + W) / 4 + 14;
+    const vw = Math.max(.8 * ((L + W) * .866 + 34) + .2 * 304, (bot - top + 8) * 1.55), vh = vw / 1.55;
+    svg.setAttribute('viewBox', `${-vw / 2} ${(top + bot) / 2 - vh / 2} ${vw} ${vh}`);
+    svg.textContent = '';
+    const a = (x, y, z) => iso(x - L / 2, y - W / 2, z), edge = '#cfd5df', dark = '#0b0e12';
+    const gTop = u => E + R * (1 - Math.abs(2 * u - 1));                                              // height of the gable at u
+    const wr = (x0, x1, h0, h1, c, s) => poly([a(x0, W, h0), a(x1, W, h0), a(x1, W, h1), a(x0, W, h1)], c, s);  // box on the long wall, in feet
+    const gr = (u0, u1, h0, h1, c, s) => poly([a(L, u0 * W, h0), a(L, u1 * W, h0), a(L, u1 * W, h1), a(L, u0 * W, h1)], c, s); // box on the gable
+    const pan = Math.min(T.panel < 1 ? E * T.panel : T.panel, E);
+    const door = ft => Math.min(ft / W, .62);                                                         // door width as a share of the gable
+
+    poly([a(-14, -14, 0), a(L + 14, -14, 0), a(L + 14, W + 14, 0), a(-14, W + 14, 0)], 'rgba(224,90,78,.06)', 'rgba(224,90,78,.7)');
+    if (use === 'Industrial') poly([a(L, W * .1, 0), a(L + 13, W * .1, 0), a(L + 13, W * .9, 0), a(L, W * .9, 0)], 'rgba(207,213,223,.22)', 'rgba(207,213,223,.4)'); // loading apron
+    if (use === 'Grain') { const d = door(30) / 2; poly([a(L, W * (.5 - d), 0), a(L + 13, W * (.5 - d), 0), a(L + 13, W * (.5 + d), 0), a(L, W * (.5 + d), 0)], 'rgba(207,213,223,.22)'); }
+
+    // walls and panels
+    poly([a(0, W, 0), a(L, W, 0), a(L, W, E), a(0, W, E)], T.wall, edge);
+    poly([a(L, 0, 0), a(L, W, 0), a(L, W, E), a(L, W / 2, E + R), a(L, 0, E)], T.gable, edge);
+    if (T.rib) {
+      for (let x = T.rib; x < L; x += T.rib) line(a(x, W, pan), a(x, W, E), T.ribC, .45);
+      for (let u = T.rib / W; u < 1; u += T.rib / W) line(a(L, u * W, pan), a(L, u * W, gTop(u)), T.ribC, .45);
+    } else {
+      for (let h = pan + 3; h < E; h += 3) { line(a(0, W, h), a(L, W, h), T.ribC, .5); line(a(L, 0, h), a(L, W, h), T.ribC, .5); }
+    }
+    wr(0, L, 0, pan, '#8b93a0', edge);
+    gr(0, 1, 0, pan, '#a0a7b3', edge);
+    const bays = Math.max(2, Math.round(L / 20));
+    for (let i = 1; i < bays; i++) { const x = L * i / bays; line(a(x, W, 0), a(x, W, E), 'rgba(207,213,223,.4)', .7); }
+
+    // openings
+    const dH = Math.min(E - 1, 14);
+    const shutter = (u0, u1) => { gr(u0, u1, 0, dH, '#aab1bc', edge); for (let h = 1.5; h < dH; h += 1.5) line(a(L, u0 * W, h), a(L, u1 * W, h), 'rgba(16,20,25,.4)', .4); };
+    const wShutter = (x0, x1) => { wr(x0, x1, 0, dH, '#aab1bc', edge); for (let h = 1.5; h < dH; h += 1.5) line(a(x0, W, h), a(x1, W, h), 'rgba(16,20,25,.4)', .4); };
+    if (use === 'Livestock') {
+      const d = door(16) / 2, m = .5;
+      gr(m - d, m + d, 0, E - .5, dark, edge);
+      gr(m - d * .5, m + d * .5, 0, .2, '#8b93a0');                                                   // feed passage
+      for (const u of [m - d, m + d * .5]) for (let h = 1.2; h < 4.2; h += 1) line(a(L, u * W, h), a(L, (u + d * .5) * W, h), '#d7dbe2', .55); // gates
+    } else if (use === 'Storage') {
+      const d = door(16) / 2;
+      shutter(.5 - d, .5 + d);
+      gr(.5 + d + .04, Math.min(.5 + d + .04 + 3.5 / W, .98), 0, 6.5, '#2c323b', edge);               // personnel door
+    } else if (use === 'Grain') {
+      const d = door(30) / 2;
+      gr(.5 - d, .5 + d, 0, dH, '#1f4230', edge);
+      line(a(L, .5 * W, 0), a(L, .5 * W, dH), edge, .7);
+      for (let i = 1; i < 6; i++) line(a(L, (.5 - d + d * 2 * i / 6) * W, 0), a(L, (.5 - d + d * 2 * i / 6) * W, dH), 'rgba(207,213,223,.3)', .4);
+    } else if (use === 'Equestrian') {
+      const d = door(24) / 2;
+      gr(.5 - d, .5 + d, 0, E - .5, dark, edge);
+      gr(.5 - d, .5 + d, 0, .25, '#c2a06c');                                                          // arena surface
+      const n = Math.max(2, Math.floor(L / 16));
+      for (let i = 0; i < n; i++) {
+        const c = L * (i + .5) / n;
+        wr(c - 2, c + 2, 0, 7, '#4a3620', edge);                                                       // stable door
+        line(a(c - 2, W, 3.8), a(c + 2, W, 3.8), edge, .6);
+        wr(c - 2, c + 2, 3.9, 7, dark);
+      }
+    } else {
+      const d = door(14) / 2;
+      shutter(.5 - d, .5 + d);
+      const n = Math.max(1, Math.min(3, Math.floor(L / 40)));
+      for (let i = 0; i < n; i++) { const c = L * (i + .5) / n; wShutter(c - 7, c + 7); wr(c + 9, c + 12.5, 0, 6.5, '#596270', edge); }
+    }
+
+    // overhang, carried on posts
+    const zo = E - T.over * 2 * R / W;
+    if (T.over) {
+      for (let i = 0; i <= bays; i++) { const x = L * i / bays; line(a(x, W + T.over, 0), a(x, W + T.over, zo), edge, 1); }
+      poly([a(L, W, E), a(L, W + T.over, zo), a(L, W, zo)], T.gable, edge);
+    }
+
+    // roof and rooflights
+    poly([a(0, W / 2, E + R), a(L, W / 2, E + R), a(L, W + T.over, zo), a(0, W + T.over, zo)], T.roof, edge);
+    for (let i = 1; i < bays; i++) { const x = L * i / bays; line(a(x, W / 2, E + R), a(x, W + T.over, zo), 'rgba(16,20,25,.3)', .6); }
+    const zAt = f => E + R * (1 - (f - .5) / .5);                                                      // roof height at a share of the span
+    const lights = (f0, f1, every) => { for (let i = 0; i < bays; i += every) { const x = L * (i + .3) / bays, x2 = L * (i + .7) / bays; poly([a(x, W * f0, zAt(f0)), a(x2, W * f0, zAt(f0)), a(x2, W * f1, zAt(f1)), a(x, W * f1, zAt(f1))], 'rgba(255,255,255,.34)'); } };
+    if (use === 'Livestock') lights(.62, .84, 1);
+    else if (use === 'Storage') lights(.68, .82, 2);
+    else if (use === 'Equestrian') lights(.6, .92, 1);
+    else if (use === 'Industrial') { lights(.56, .7, 1); lights(.78, .92, 1); }
+    else for (let i = 0; i < bays; i++) { const x = L * (i + .35) / bays, x2 = L * (i + .65) / bays; poly([a(x, W * .5, E + R), a(x2, W * .5, E + R), a(x2, W * .5, E + R + 1.6), a(x, W * .5, E + R + 1.6)], '#cfd5df', 'rgba(16,20,25,.5)'); } // ridge vents
+
+    $('szCap').textContent = T.cap;
+    $('oL').textContent = L + ' ft'; $('oW').textContent = W + ' ft'; $('oE').textContent = E + ' ft';
+    $('oArea').textContent = (L * W).toLocaleString('en-GB') + ' sq ft';
+  }
+  [szL, szW, szE].forEach(i => i.addEventListener('input', draw));
+  const uses = [...document.querySelectorAll('#uses button')];
+  uses.forEach(b => b.addEventListener('click', () => { uses.forEach(o => o.setAttribute('aria-pressed', o === b)); use = b.textContent; draw(); if (!reduce) svg.animate([{opacity: .25, transform: 'translateY(6px)'}, {opacity: 1, transform: 'none'}], {duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)'}); }));
+  draw();
+
+  /* ---- testimonial rows (repeated so the loop is seamless) ---- */
+  const Q = [
+    ['I have purchased 4 sheds from the company over the last 4 years and I am delighted with the service I received.', 'Robert Martin', 'Gartwhinnie Farm, Stirling'],
+    ['Good bunch of people, excellent shed, price good. All in all it has been a great experience.', 'Mr Coad', 'Truro'],
+    ['Excellent service & product, will recommend to anyone looking to put up a building to contact you.', 'Mr Brenton', 'Liskeard'],
+    ['Product quality very good and a very nice delivery man, very helpful.', 'Mrs Robert', 'Glastonbury'],
+    ['The steel went together perfectly, the materials supplied were all correct and of excellent quality.', 'Trevor Harrison', 'Lower Benchley Farm, Kent'],
+    ['They have always been of the highest quality and standard. I have no hesitation in recommending them.', 'John Gardener', 'Buttsbeer Cross Farm, Bridgerule']
+  ];
+  const card = ([q, n, p]) => `<figure class="tc"><blockquote>“${q.replace('&', '&amp;')}”</blockquote><figcaption><b>${n}</b>${p}</figcaption></figure>`;
+  const a1 = Q.slice(0, 3), a2 = Q.slice(3);
+  $('r1').innerHTML = [...a1, ...a2, ...a1, ...a2, ...a1, ...a2, ...a1, ...a2].map(card).join('');
+  $('r2').innerHTML = [...a2, ...a1, ...a2, ...a1, ...a2, ...a1, ...a2, ...a1].map(card).join('');
+})();
+
+(() => {
+  /* ---- enquiry pop-up: a preview only, nothing typed here leaves the page ---- */
+  const m = document.getElementById('eqModal'), card = m.querySelector('.eq-card'), form = document.getElementById('eqForm'), done = document.getElementById('eqDone');
+  const title = document.getElementById('eqTitle'), svc = document.getElementById('eqService'), msg = document.getElementById('eqMsg');
+  // buttons from the shared header and footer
+  document.querySelector('.nav__right .btn').dataset.enquire = 'quote';
+  document.querySelector('.drawer__foot .d-b').dataset.enquire = 'general';
+  [...document.querySelectorAll('.foot-col a')].filter(a => a.textContent === 'Enquire for beams').forEach(a => a.dataset.enquire = 'beams');
+  const KINDS = {quote: ['Get a quote', 'Steel Frame Buildings'], general: ['Email the team', 'Steel Frame Buildings'], beams: ['Enquire for beams', 'Beams'], sizer: ['Send to the team', 'Steel Frame Buildings']};
+  let last = null;
+  function keys(e){
+    if (e.key === 'Escape') return close();
+    if (e.key !== 'Tab') return;
+    const f = [...m.querySelectorAll('a[href],button,input,select,textarea')].filter(el => el.offsetParent !== null);
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+  function open(kind, trigger){
+    last = trigger;
+    form.hidden = false; done.hidden = true;
+    title.textContent = KINDS[kind][0]; svc.value = KINDS[kind][1];
+    if (kind === 'sizer') {
+      const use = document.querySelector('#uses [aria-pressed="true"]').textContent;
+      msg.value = `I'm thinking about a building roughly this size:\nLength: ${szL.value} ft\nWidth: ${szW.value} ft\nHeight to eaves: ${szE.value} ft\nUse: ${use}`;
+    } else if (kind === 'beams') msg.value = '';
+    m.classList.add('is-open'); m.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll'); document.addEventListener('keydown', keys);
+    card.scrollTop = 0;
+    setTimeout(() => document.getElementById('eqName').focus({preventScroll: true}), 120);
+  }
+  function close(){
+    m.classList.remove('is-open'); m.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll'); document.removeEventListener('keydown', keys);
+    if (last && last.offsetParent !== null) last.focus({preventScroll: true});
+  }
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-enquire]');
+    if (t) { e.preventDefault(); open(t.dataset.enquire, t); }
+  });
+  m.querySelectorAll('[data-eq-close]').forEach(el => el.addEventListener('click', close));
+  form.addEventListener('submit', e => {
+    e.preventDefault();                                                                                // deliberately not sent anywhere
+    const first = form.elements.name.value.trim().split(' ')[0];
+    document.getElementById('eqDoneTitle').textContent = `Thanks, ${first}.`;
+    form.reset(); form.hidden = true; done.hidden = false;
+    card.scrollTop = 0; done.focus({preventScroll: true});
+  });
+})();
+
+</script>
+</body>
+</html>
