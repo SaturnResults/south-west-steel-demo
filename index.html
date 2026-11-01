@@ -344,16 +344,23 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .p-scroll{height:auto}
   .p-sticky{position:static;height:auto;display:flex;flex-direction:column;gap:0;padding:80px 0}
   .p-left{display:contents}
-  .p-left .tag{order:1;align-self:flex-start}.p-left h2{order:2}.p-steps{order:4}.btn-next{order:5;align-self:flex-start;margin-top:34px}
-  .p-graphic{order:3;position:sticky;top:0;z-index:2;width:100%;background:#101419;padding:14px 0 8px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12)}
-  #build{max-height:34vh;display:block;margin:auto}
+  .p-left .tag{order:1;align-self:flex-start}.p-left h2{order:2}.p-steps{order:4}.btn-next{display:none}
+  .p-graphic{order:3;width:100%;padding:6px 0 8px;margin-bottom:30px}
+  #build{max-height:none;max-width:560px;display:block;margin:auto}
   .p-steps{min-height:0;display:grid;gap:34px}
   .p-ticks{display:none}
-  .step{position:static;opacity:.45;transform:none;pointer-events:auto;transition:opacity .4s}
-  .step.on,.step.seen{opacity:1}
+  .step{position:static;opacity:1;transform:none;pointer-events:auto;transition:none}
   .sheets{grid-template-columns:1fr}.sheet:nth-child(n){grid-column:auto}
   .sheet .im{min-height:0;aspect-ratio:4/3}
   .sizer{grid-template-columns:1fr;gap:34px}
+  /* larger slider handles and a taller touch area on phones and tablets */
+  input[type=range]{height:44px;background:transparent;touch-action:pan-y}
+  input[type=range]::-webkit-slider-runnable-track{height:6px;background:rgba(255,255,255,.2)}
+  input[type=range]::-moz-range-track{height:6px;background:rgba(255,255,255,.2)}
+  input[type=range]::-webkit-slider-thumb{box-sizing:border-box;width:36px;height:36px;margin-top:-15px;border-width:9px}
+  input[type=range]::-moz-range-thumb{box-sizing:border-box;width:36px;height:36px;border-width:9px}
+  .field{margin-top:12px}
+  .field label{margin-bottom:0}
 }
 @media (max-width:560px){
   .eq-grid{grid-template-columns:1fr}
@@ -851,7 +858,7 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   });
 
   const ps = document.getElementById('pscroll'), steps = [...document.querySelectorAll('.step')], ticks = [...document.querySelectorAll('#pticks i')];
-  let active = 0, ticking = false;
+  let active = 0, ticking = false, shown = -1;
   function frame(){
     const fr = fig.parentNode.getBoundingClientRect();
     if (!reduce && fr.bottom > 0 && fr.top < innerHeight) fig.style.transform = `translateY(${-fr.height * .16 * (innerHeight - fr.top) / (innerHeight + fr.height)}px)`;
@@ -861,17 +868,12 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
       prog = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
       const i = Math.min(4, Math.floor(prog * 5 * .999));
       if (i !== active) { steps[active].classList.remove('on'); steps[i].classList.add('on'); active = i; }
-    } else {
-      // phone: the drawing stays pinned while the stages pass beneath it
-      const line = innerHeight * .62, tops = steps.map(s => s.getBoundingClientRect().top);
-      let i = 0; tops.forEach((t, k) => { if (t < line) i = k; });
-      const nxt = i < 4 ? tops[i + 1] : tops[4] - steps[4].offsetHeight;
-      const frac = Math.min(Math.max((line - tops[i]) / Math.max(nxt - tops[i], 1), 0), 1);
-      prog = (tops[0] > line) ? 0 : (i + frac) / 5;
-      steps.forEach((s, k) => { s.classList.toggle('on', k === i); s.classList.toggle('seen', k < i); });
-    }
+    } else prog = 1; // phones and tablets: a plain section showing the finished building
     if (reduce) prog = 1;
-    for (let s = 0; s < 5; s++) { const local = Math.min(Math.max(prog * 5 - s, 0), 1); setStage(s, local); if (ticks[s]) ticks[s].style.setProperty('--f', local); }
+    if (prog !== shown) {
+      shown = prog;
+      for (let s = 0; s < 5; s++) { const local = Math.min(Math.max(prog * 5 - s, 0), 1); setStage(s, local); if (ticks[s]) ticks[s].style.setProperty('--f', local); }
+    }
     ticking = false;
   }
   addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(frame); ticking = true; } }, {passive: true});
